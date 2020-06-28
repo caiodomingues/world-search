@@ -34,7 +34,7 @@ export default createGlobalStyle`
     width: 80px;
     height: 80px;
     margin-top: 25%;
-    margin-left: 25%;
+    margin-left: 45%;
   }
 
   .lds-ring div {

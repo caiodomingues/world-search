@@ -4,8 +4,8 @@ import { FiChevronRight, FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import ICountry from '../../interfaces/Country';
-
-import { Title, Subtitle, Form, Countries, Error } from './styles';
+import Loading from '../../components/Loading';
+import { Title, Subtitle, Form, Results, Countries, Error } from './styles';
 
 const Dashboard: React.FC = () => {
   const [countries, setCountries] = useState<ICountry[]>([]);
@@ -46,14 +46,7 @@ const Dashboard: React.FC = () => {
         <FiSearch /> World Search
       </Title>
       <Subtitle>&quot;Não, não é plana.&quot;</Subtitle>
-      {loading && (
-        <div className="lds-ring">
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-      )}
+      {loading && <Loading />}
       {!loading && (
         <>
           <Form tip={!!tip} onSubmit={handleFormSubmit}>
@@ -68,20 +61,30 @@ const Dashboard: React.FC = () => {
             </button>
           </Form>
           {tip && <Error>{tip}</Error>}
+          <Results> {countries.length} resultados encontrados</Results>
           <Countries>
-            {countries.map(country => (
-              <Link key={country.name} to={`/country/${country.name}`}>
-                <img src={country.flag} alt={country.name} />
-                <div>
-                  <strong>
-                    {country.translations.br}
-                    {country.cioc ? <span>{country.cioc}</span> : ''}
-                  </strong>
-                  <p>{country.subregion}</p>
-                </div>
-                <FiChevronRight size={20} />
-              </Link>
-            ))}
+            {countries
+              .sort((a, b) =>
+                // eslint-disable-next-line no-nested-ternary
+                a.translations.br > b.translations.br
+                  ? 1
+                  : a.translations.br < b.translations.br
+                  ? -1
+                  : 0,
+              )
+              .map(country => (
+                <Link key={country.name} to={`/country/${country.name}`}>
+                  <img src={country.flag} alt={country.name} />
+                  <div>
+                    <strong>
+                      {country.translations.br}
+                      {country.cioc ? <span>{country.cioc}</span> : ''}
+                    </strong>
+                    <p>{country.region}</p>
+                  </div>
+                  <FiChevronRight size={20} />
+                </Link>
+              ))}
           </Countries>
         </>
       )}

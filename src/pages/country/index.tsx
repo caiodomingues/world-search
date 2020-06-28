@@ -1,9 +1,11 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
-import { FiChevronLeft } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 import ICountry from '../../interfaces/Country';
+import Loading from '../../components/Loading';
+
 import { Header, CountryInfo } from './styles';
 
 interface CountryParams {
@@ -12,12 +14,14 @@ interface CountryParams {
 
 const Country: React.FC = () => {
   const [country, setCountry] = useState<ICountry>();
+  const [loading, setLoading] = useState(true);
   const { params } = useRouteMatch<CountryParams>();
 
   useEffect(() => {
     async function gatherData(): Promise<void> {
       const tmp = await api.get(`/name/${params.country}`);
       setCountry(tmp?.data[0]);
+      setLoading(false);
     }
 
     gatherData();
@@ -31,21 +35,29 @@ const Country: React.FC = () => {
           Voltar
         </Link>
       </Header>
-
-      {country && (
+      {loading && <Loading />}
+      {!loading && country && (
         <CountryInfo>
           <header>
             <img src={country.flag} alt={country.name} />
             <div>
               <strong>
-                {country.translations?.br}{' '}
+                {country.translations?.br}
                 {country.cioc ? <span>{country.cioc}</span> : ''}
               </strong>
               <p>{country.nativeName}</p>
               <p>
-                {country.region}/{country.subregion}
+                {country.region} <FiChevronRight /> {country.subregion}
               </p>
             </div>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://www.google.com/maps/search/?api=1&query=${country.latlng[0]},${country.latlng[1]}`}
+            >
+              Abrir no <b>&nbsp;Maps</b>
+              <FiChevronRight />
+            </a>
           </header>
           <ul>
             <li>

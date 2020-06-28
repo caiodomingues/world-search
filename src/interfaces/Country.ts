@@ -18,6 +18,7 @@ export default interface ICountry {
   currencies: Array<ICurrency>;
   languages: Array<ILanguages>;
   altSpellings: Array<string>;
+  latlng: Array<number>;
   translations: {
     br: string;
   };

@@ -40,6 +40,36 @@ export const CountryInfo = styled.section`
       height: 120px;
     }
 
+    p > svg {
+      padding-top: 5px;
+      font-size: 16px;
+    }
+
+    a {
+      margin-left: auto;
+      text-decoration: none;
+      background-color: #fafafa;
+      padding: 10px 15px;
+      border-radius: 0.25rem;
+      text-transform: uppercase;
+      color: #181818;
+
+      display: flex;
+      align-items: center;
+      transition: 0.25s;
+
+      &:hover {
+        background: ${shade(0.2, '#00b7ff')};
+        color: #fff;
+        transform: translateX(10px);
+      }
+
+      svg {
+        margin-left: 15px;
+        font-size: 24px;
+      }
+    }
+
     div {
       margin-left: 24px;
 
@@ -83,7 +113,7 @@ export const CountryInfo = styled.section`
         color: #fff;
         margin: initial 10px;
 
-        &#ln{
+        &#ln {
           display: flex;
         }
 

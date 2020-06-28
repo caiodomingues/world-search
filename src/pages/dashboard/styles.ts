@@ -47,7 +47,7 @@ export const Form = styled.form<FormProps>`
       css`
         border-color: #c53030;
       `}
-}
+    }
 
     &::placeholder {
       color: #a8a8b3;
@@ -55,7 +55,7 @@ export const Form = styled.form<FormProps>`
   }
 
   button {
-    width: 150px;
+    width: 75px;
     height: 70px;
     background: #383838;
     border-radius: 0 5px 5px 0;
@@ -70,8 +70,17 @@ export const Form = styled.form<FormProps>`
   }
 `;
 
+export const Results = styled.p`
+  border-radius: 0.5rem;
+  font-size: 14px;
+  color: #afafaf;
+  padding: 2px 10px;
+  margin-right: 45px;
+  margin-top: 35px;
+  text-align: end;
+`;
+
 export const Countries = styled.div`
-  margin-top: 80px;
   max-width: 990px;
   display: flex;
   flex-flow: row wrap;
@@ -158,4 +167,5 @@ export const Error = styled.span`
   display: block;
   color: #c53030;
   margin-top: 8px;
+  text-align: center;
 `;
