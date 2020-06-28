@@ -6,16 +6,7 @@
 
 <p align="center">
   <img alt="TS" src="https://img.shields.io/github/languages/top/caiodomingues/world-search?style=flat">
-  <img alt="JS" src="https://img.shields.io/github/languages/top/caiodomingues/world-search?style=flat">
   <img alt="Purpose" src="https://img.shields.io/badge/purpose-study-orange?style=flat">
-</p>
-
-<p align="center">
-  <a href="#recursos">Recursos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#instalação">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#créditos">Créditos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#licença">Licença</a>
 </p>
 
 ## Running the project
